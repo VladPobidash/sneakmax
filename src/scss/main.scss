@@ -7,8 +7,10 @@
 // подключения компонентов страницы
 @import "./components/header";
 @import "./components/hero";
+@import "./components/catalog";
 
 // подключение вспомагательных компонентов
 @import "./components/nav";
 @import "./components/cart";
 @import "./components/logo";
+@import "./components/product";
