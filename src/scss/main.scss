@@ -6,3 +6,9 @@
 
 // подключения компонентов страницы
 @import "./components/header";
+@import "./components/hero";
+
+// подключение вспомагательных компонентов
+@import "./components/nav";
+@import "./components/cart";
+@import "./components/logo";
