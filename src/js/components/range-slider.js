@@ -15,7 +15,7 @@ if (rangeSlider) {
   const input1 = document.getElementById("input-1");
   const inputs = [input0, input1];
 
-  rangeSlider.noUiSlider.on("update", (values, handle) => {
+  rangeSlider.noUiSlider.on("update", function (values, handle) {
     inputs[handle].value = Math.round(values[handle]);
   });
 
@@ -27,8 +27,8 @@ if (rangeSlider) {
   };
 
   inputs.forEach((el, idx) => {
-    el.addEventListener("change", (e) =>
-      setRangeSlider(idx, e.currentTarget.value)
-    );
+    el.addEventListener("change", (e) => {
+      setRangeSlider(idx, e.currentTarget.value);
+    });
   });
 }

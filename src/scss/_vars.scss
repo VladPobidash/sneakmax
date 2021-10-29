@@ -1,3 +1,5 @@
+@import "./mixins";
+
 :root {
   // colors
   --color-black: #000;
@@ -12,13 +14,14 @@
   --color-cameo: #dbbba9;
   --color-gray: #b2b5bb;
   --color-jumbo: #808080;
+  --color-btn-active: #8c2828;
 
   // offsets
   --grid-gap: 20px;
-  --big-offset: 60px;
   --main-offset: 40px;
   --second-offset: 20px;
   --small-offset: 10px;
+  --big-offset: 60px;
 
   // fonts
   --font-family: "Intro", sans-serif;
@@ -28,4 +31,14 @@
   --middle-book: 400 16px / 140% var(--font-family);
   --middle-regular: 600 16px / 140% var(--font-family);
   --small-book: 400 14px / 140% var(--font-family);
+}
+
+@include mobile {
+  :root {
+    --grid-gap: 10px;
+    --main-offset: 20px;
+    --second-offset: 14px;
+    --small-offset: 8px;
+    --big-offset: 30px;
+  }
 }

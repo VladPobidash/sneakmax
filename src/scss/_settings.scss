@@ -11,6 +11,7 @@ html {
 body {
   margin: 0;
   font-family: "Intro", sans-serif;
+  background-color: var(--color-white);
 }
 
 img {
@@ -21,25 +22,43 @@ a {
   text-decoration: none;
 }
 
+.list-reset {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.is-outer {
+  position: relative !important; // stylelint-disable-line declaration-no-important
+  left: -9999px !important; // stylelint-disable-line declaration-no-important
+}
+
 .site-container {
-  overflow: hidden; // если используете на сайте position: sticky - уберите эту настройку
+  overflow: hidden;
 }
 
 .is-hidden {
   display: none !important; // stylelint-disable-line declaration-no-important
 }
 
+.for-mobile {
+  display: none;
+
+  @include mobile {
+    display: block;
+  }
+}
+
+.error {
+  border: 2px #ff4019 solid !important; // stylelint-disable-line declaration-no-important
+}
+
 .btn-reset {
+  // outline: none;
   border: none;
   padding: 0;
   background: transparent;
   cursor: pointer;
-}
-
-.list-reset {
-  list-style: none;
-  margin: 0;
-  padding: 0;
 }
 
 .container {
@@ -54,12 +73,12 @@ a {
 
 .visually-hidden {
   position: absolute;
-  overflow: hidden;
-  margin: -1px;
-  border: 0;
-  padding: 0;
   width: 1px;
   height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
   clip: rect(0 0 0 0);
 }
 
@@ -67,9 +86,14 @@ a {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   gap: var(--grid-gap);
+
+  @include mobile {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
 
 .btn {
+  outline: none;
   border-radius: 4px;
   padding: 22px 47px;
   font: var(--middle-regular);
@@ -79,8 +103,14 @@ a {
     color: var(--color-white);
     background-color: var(--color-accent);
 
-    &:hover {
-      background-color: var(--color-accent-hover);
+    @include desktop {
+      &:hover {
+        background-color: var(--color-accent-hover);
+      }
+    }
+
+    &:active {
+      background-color: var(--color-btn-active);
     }
   }
 
@@ -88,8 +118,14 @@ a {
     color: var(--color-white);
     background-color: var(--color-main);
 
-    &:hover {
-      background-color: var(--color-main-hover);
+    @include desktop {
+      &:hover {
+        background-color: var(--color-main-hover);
+      }
+    }
+
+    &:active {
+      background-color: var(--color-btn-active);
     }
   }
 
@@ -99,11 +135,30 @@ a {
     color: var(--color-main);
     background-color: transparent;
 
-    &:hover {
-      color: var(--color-white);
-      background-color: var(--color-main);
+    @include desktop {
+      &:hover {
+        color: var(--color-white);
+        background-color: var(--color-main);
+      }
+    }
+
+    &:active {
+      background-color: var(--color-btn-active);
     }
   }
+}
+
+.btn--primary.focus-visible {
+  background-color: var(--color-accent-hover);
+}
+
+.btn--secondary.focus-visible {
+  background-color: var(--color-main-hover);
+}
+
+.btn--thirdly.focus-visible {
+  color: var(--color-white);
+  background-color: var(--color-main);
 }
 
 .title {
@@ -136,6 +191,10 @@ a {
       background-image: url("../img/check.svg");
       background-size: 15px 12px;
     }
+  }
+
+  .custom-checkbox__field:focus + .custom-checkbox__content::before {
+    outline: 2px solid var(--color-accent);
   }
 }
 
